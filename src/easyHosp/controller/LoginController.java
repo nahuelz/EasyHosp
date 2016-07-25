@@ -2,17 +2,21 @@ package easyHosp.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import easyHosp.modelo.Persona;
+import easyHosp.servicio.LoginServicio;
+
 /**
  * Servlet implementation class LoginController
  */
-@WebServlet("/LoginController")
+
+@SuppressWarnings("serial")
 public class LoginController extends HttpServlet {
-	private static final long serialVersionUID = 2L;
+	
+	LoginServicio servicio = new LoginServicio();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,8 +38,24 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		Persona per = null;
+		try {
+			per = servicio.login(email, password);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+				
+		if (per != null){
+			request.setAttribute("per", per);
+			request.getRequestDispatcher("index.jsp").forward(request,response);
+		}else{
+			request.setAttribute("per", per);
+			request.getRequestDispatcher("login.jsp").forward(request,response);
+		}
 	}
 
 }

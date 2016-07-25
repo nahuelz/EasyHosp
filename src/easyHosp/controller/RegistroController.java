@@ -2,21 +2,19 @@ package easyHosp.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import easyHosp.modelo.Persona;
-import interfaces.DAOPersona;
-import interfaces.DAOPersonaImpl;
+import easyHosp.servicio.RegistroServicio;
 
 /**
  * Servlet implementation class RegistroController
  */
-@WebServlet("/RegistroController")
+@SuppressWarnings("serial")
 public class RegistroController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
+	RegistroServicio servicio = new RegistroServicio();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -36,26 +34,26 @@ public class RegistroController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DAOPersona dao = new DAOPersonaImpl();
-		Persona per = new Persona();
-		per.setApellido(request.getParameter("apellido"));
-		per.setNombre(request.getParameter("nombre"));
-		per.setEmail(request.getParameter("email"));
-		per.setPassword(request.getParameter("password"));
-		per.setProvincia(request.getParameter("provincia").toLowerCase());
-		per.setCiudad(request.getParameter("ciudad").toLowerCase());
-		try {
-			dao.registrar(per);
-			System.out.println("Registrado");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		request.setAttribute("per", per);
+		//DATOS PERSONA
+		String apellido = request.getParameter("apellido");
+		String nombre =  request.getParameter("nombre");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		//DATOS CASA
+		String disponible = request.getParameter("disponible");
+		String lugar = request.getParameter("lugar");
+		String chicos = request.getParameter("chicos");
+		String mascota = request.getParameter("mascota");
+		String fumar = request.getParameter("fumar");
+		String compartida = request.getParameter("compartida");	
+		String provincia = request.getParameter("provincia");
+		String ciudad = request.getParameter("ciudad");
+		servicio.registrar(nombre, apellido, email, password, disponible, lugar, chicos, mascota, fumar, compartida, provincia, ciudad);
+	
 		request.getRequestDispatcher("login.jsp").forward(request,response);
 		
 	}
-	
 			
 
 }

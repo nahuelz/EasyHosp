@@ -12,5 +12,5 @@ public interface DAO<T, K> {
 	
 	List<T> obtenerTodos() throws DAOException;
 	
-	T obtener(K id)  throws DAOException;
+	T obtener(int id)  throws DAOException;
 }

@@ -10,33 +10,23 @@ import javax.ejb.Stateless;
 @LocalBean
 
 public class Persona {
-
-	Long id;
+	int id;
 	String nombre;
 	String apellido;
 	String email;
-	String password;
-	String provincia;
-	String ciudad;
-	String telefono;	
-	int isAdmin;
-	Long casa;
+	String password;	
+	int isAdmin;  
+	Casa casa;
 	
 	public Persona(){
 		isAdmin = 0;
-		casa = null;
 	}
 
-
-	public Persona(String nombre, String apellido, String telefono, String provincia, String ciudad,
-			String password, String email, int isAdmin, Long casa) {
+	public Persona(String nombre, String apellido, String password, String email, int isAdmin, Casa casa) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
 		this.password = password;
-		this.provincia = provincia;
-		this.ciudad = ciudad;
-		this.telefono = telefono;
 		this.isAdmin = isAdmin;
 		this.casa = casa;
 	}
@@ -73,36 +63,13 @@ public class Persona {
 	public void setAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
 	}
-	public String getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
-
-	public String getCiudad() {
-		return ciudad;
-	}
-
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
-	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
 	
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -117,22 +84,18 @@ public class Persona {
 	}
 
 
-	public Long getCasa() {
+	public Casa getCasa() {
 		return casa;
 	}
 
 
-	public void setCasa(Long casa) {
+	public void setCasa(Casa casa) {
 		this.casa = casa;
 	}
 	@Override
 	public String toString() {
 		return "Persona [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", password=" + password + ", provincia=" + provincia + ", ciudad=" + ciudad + ", telefono="
-				+ telefono + ", isAdmin=" + isAdmin + ", casa=" + casa + "]";
+				+ ", password=" + password + ", isAdmin=" + isAdmin + ", casa=" + casa + "]";
 	}
-
-
-	
 	
 }
