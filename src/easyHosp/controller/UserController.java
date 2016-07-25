@@ -1,8 +1,8 @@
 package easyHosp.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,18 +12,17 @@ import interfaces.DAOPersona;
 import interfaces.DAOPersonaImpl;
 
 /**
- * Servlet implementation class RegistroController
+ * Servlet implementation class UserController
  */
-@WebServlet("/RegistroController")
-public class RegistroController extends HttpServlet {
+
+public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistroController() {
+    public UserController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -36,26 +35,24 @@ public class RegistroController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		boolean logeado = false;
 		DAOPersona dao = new DAOPersonaImpl();
 		Persona per = new Persona();
-		per.setApellido(request.getParameter("apellido"));
-		per.setNombre(request.getParameter("nombre"));
 		per.setEmail(request.getParameter("email"));
 		per.setPassword(request.getParameter("password"));
-		per.setProvincia(request.getParameter("provincia").toLowerCase());
-		per.setCiudad(request.getParameter("ciudad").toLowerCase());
 		try {
-			dao.registrar(per);
-			System.out.println("Registrado");
+			dao.login(per);
+			logeado = true;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("per", per);
-		request.getRequestDispatcher("login.jsp").forward(request,response);
-		
+		if (logeado){
+			request.setAttribute("per", per);
+			request.getRequestDispatcher("index.jsp").forward(request,response);
+		}else{
+			request.setAttribute("per", per);
+			request.getRequestDispatcher("login.jsp").forward(request,response);
+		}
 	}
-	
-			
 
 }

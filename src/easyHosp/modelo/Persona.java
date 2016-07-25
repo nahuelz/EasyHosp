@@ -1,8 +1,17 @@
 package easyHosp.modelo;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
+/**
+ * Session Bean implementation class UserModel
+ */
+@Stateless
+@LocalBean
+
 public class Persona {
 
-	int id;
+	Long id;
 	String nombre;
 	String apellido;
 	String email;
@@ -11,17 +20,28 @@ public class Persona {
 	String ciudad;
 	String telefono;	
 	int isAdmin;
+	Long casa;
 	
 	public Persona(){
 		isAdmin = 0;
+		casa = null;
 	}
-	
-	public int getId() {
-		return id;
+
+
+	public Persona(String nombre, String apellido, String telefono, String provincia, String ciudad,
+			String password, String email, int isAdmin, Long casa) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.password = password;
+		this.provincia = provincia;
+		this.ciudad = ciudad;
+		this.telefono = telefono;
+		this.isAdmin = isAdmin;
+		this.casa = casa;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -76,6 +96,43 @@ public class Persona {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public int getIsAdmin() {
+		return isAdmin;
+	}
+
+
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+
+	public Long getCasa() {
+		return casa;
+	}
+
+
+	public void setCasa(Long casa) {
+		this.casa = casa;
+	}
+	@Override
+	public String toString() {
+		return "Persona [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
+				+ ", password=" + password + ", provincia=" + provincia + ", ciudad=" + ciudad + ", telefono="
+				+ telefono + ", isAdmin=" + isAdmin + ", casa=" + casa + "]";
+	}
+
+
 	
 	
 }

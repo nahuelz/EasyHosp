@@ -17,23 +17,29 @@ public class DAOPersonaImpl extends Conexion implements DAOPersona{
 	// LOGEAR PERSONA
 	@Override
 	public boolean login(Persona per) throws Exception {
+		this.conectar();
+		String query = "SELECT * FROM Persona where (email = ? and password = ?)";
+		boolean result = false;
+		ResultSet rs = null;
+		PreparedStatement statement = null;
 		try{
-			this.conectar();
-			PreparedStatement st = this.conexion.prepareStatement("SELECT * FROM Persona where (email = ? and password = ?)");
-			st.setString(1, per.getEmail());
-			st.setString(2, per.getPassword());			
-			ResultSet r = st.executeQuery();
-			if (r.next()){
-				return true;
-			}else
-				return false;
+			statement = this.conexion.prepareStatement(query);
+			statement.setString(1, per.getEmail());
+			statement.setString(2, per.getPassword());			
+			rs = statement.executeQuery();
 		}catch(Exception e){
 			throw e;
 		}finally{
+			if (statement != null){
+				statement.close();
+			}
+			if (rs != null){
+				rs.close();
+				result = true;
+			}
 			this.cerrar();
 		}
-			
-			
+		return result;
 	}
 	
 	// REGISTRAR NUEVA PERSONA
@@ -41,16 +47,18 @@ public class DAOPersonaImpl extends Conexion implements DAOPersona{
 	public void registrar(Persona per) throws Exception {
 		try{
 			this.conectar();
-			PreparedStatement st = this.conexion.prepareStatement("INSERT INTO Persona (nombre, apellido, email, password, provincia, ciudad, telefono, isAdmin ) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
-			st.setString(1, per.getNombre());
-			st.setString(2, per.getApellido());
-			st.setString(3, per.getEmail());
-			st.setString(4, per.getPassword());
-			st.setString(5, per.getProvincia());
-			st.setString(6, per.getCiudad());
-			st.setString(7, per.getTelefono());
-			st.setInt(8, per.getisAdmin());
-			st.executeUpdate();
+			String query= "INSERT INTO Persona (nombre, apellido, email, password, provincia, ciudad, telefono, isAdmin ) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement statement = this.conexion.prepareStatement(query);
+			statement.setString(1, per.getNombre());
+			statement.setString(2, per.getApellido());
+			statement.setString(3, per.getEmail());
+			statement.setString(4, per.getPassword());
+			statement.setString(5, per.getProvincia());
+			statement.setString(6, per.getCiudad());
+			statement.setString(7, per.getTelefono());
+			statement.setInt(8, per.getisAdmin());
+			statement.executeUpdate();
+			statement.close();
 		}catch(Exception e){
 			throw e;
 		}finally{
@@ -63,7 +71,8 @@ public class DAOPersonaImpl extends Conexion implements DAOPersona{
 	public void modificar(Persona per) throws Exception {
 		try{
 			this.conectar();
-			PreparedStatement st = this.conexion.prepareStatement("UPDATE Persona set nombre = ? where id = ?");
+			String query = "UPDATE Persona set nombre = ? where id = ?";
+			PreparedStatement st = this.conexion.prepareStatement(query);
 			st.setString(1, per.getNombre());
 			st.setInt(2, per.getId());
 			st.executeUpdate();

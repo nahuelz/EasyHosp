@@ -3,13 +3,13 @@
 	
 <div class="row">
 	<div class="col-sm-8 col-md-4 col-md-offset-4 panel panel-default" style="margin-top: 5%;">
-		<form class="form-signin" action="LoginServlet" method="POST">
+		<form class="form-signin" action="UserController" method="POST">
 			<h1 class="text-center login-title">Sign in to EasyHosp</h1></br>
 			<label for="email" class="sr-only">Email address</label>
-				<input type="email" id="email" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+				<input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
 				</br>
-			<label for="inputPassword" class="sr-only">Password</label>
-				<input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+			<label for="password" class="sr-only">Password</label>
+				<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
 			<div class="checkbox">
 				<label>
 					<input type="checkbox" value="remember-me"> Remember me
@@ -21,4 +21,7 @@
 </div>
  
 </body>
+
+<jsp:useBean id="per" scope="request" class="easyHosp.modelo.Persona" />
+Email: <jsp:getProperty name="per" property="email"/>
 <%@include file="footer.html" %>

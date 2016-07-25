@@ -21,4 +21,7 @@
 		</a>
     </div>
 </header>
+<h1>EJB</h1>
+<jsp:useBean id="per" scope="request" class="easyHosp.modelo.Persona" />
+Email: <jsp:getProperty name="per" property="email"/>
 <%@include file="footer.html" %>
