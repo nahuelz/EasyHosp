@@ -12,14 +12,14 @@ import javax.servlet.http.HttpSession;
 import easyHosp.modelo.Favorito;
 import easyHosp.modelo.Persona;
 import easyHosp.servicio.FavoritoServicio;
-import easyHosp.servicio.HospedajeServicio;
+import easyHosp.servicio.PersonaServicio;
 
 /**
  * Servlet implementation class HospedajeController
  */
 @SuppressWarnings("serial")
 public class HospedajeController extends HttpServlet {
-       HospedajeServicio servicio = new HospedajeServicio();
+       PersonaServicio servicio = new PersonaServicio();
        FavoritoServicio serviciof = new FavoritoServicio();
     /**
      * @see HttpServlet#HttpServlet()

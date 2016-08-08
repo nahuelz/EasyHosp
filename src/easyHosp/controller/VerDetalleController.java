@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import easyHosp.modelo.Persona;
-import easyHosp.servicio.HospedajeServicio;
+import easyHosp.servicio.PersonaServicio;
 
 /**
  * Servlet implementation class VerDetalleController
@@ -17,7 +17,7 @@ import easyHosp.servicio.HospedajeServicio;
 @WebServlet("/VerDetalleController")
 public class VerDetalleController extends HttpServlet {
 	
-	HospedajeServicio servicio = new HospedajeServicio();
+	PersonaServicio servicio = new PersonaServicio();
        
     /**
      * @see HttpServlet#HttpServlet()
