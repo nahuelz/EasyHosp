@@ -8,7 +8,7 @@ public class Conexion {
 	private static final String PASSWORD = "";
 		
 	//JDBC driver nombre y base de datos URL
-	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/prueba";
+	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/easyhosp";
 		
 	// init connection object
     protected Connection conexion;
