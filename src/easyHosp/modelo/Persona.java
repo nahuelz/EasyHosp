@@ -15,19 +15,47 @@ public class Persona {
 	String apellido;
 	String email;
 	String password;	
-	int isAdmin;  
+	int isAdmin;
+	String provincia;
+	String ciudad;
+	String telefono;
+	String dni;
+	String sexo;
 	Casa casa;
-	
+	int disponible;
+
 	public Persona(){
 		isAdmin = 0;
+		telefono = "";
+		dni = "";
+		sexo = "";
 	}
-
-	public Persona(String nombre, String apellido, String password, String email, int isAdmin, Casa casa) {
+	public Persona(int id, String nombre, String apellido, String email, String password, int isAdmin, String provincia,
+			String ciudad, String telefono, String dni, String sexo, Casa casa, int disponible) {
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
 		this.password = password;
 		this.isAdmin = isAdmin;
+		this.provincia = provincia;
+		this.ciudad = ciudad;
+		this.telefono = telefono;
+		this.dni = dni;
+		this.sexo = sexo;
+		this.casa = casa;
+		this.disponible = disponible;
+	}
+	
+	public Persona(int id, String nombre, String apellido, String password, String email, int isAdmin, String provincia, String ciudad, Casa casa) {
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.email = email;
+		this.password = password;
+		this.isAdmin = isAdmin;
+		this.provincia = provincia;
+		this.ciudad = ciudad;
 		this.casa = casa;
 	}
 
@@ -92,10 +120,51 @@ public class Persona {
 	public void setCasa(Casa casa) {
 		this.casa = casa;
 	}
-	@Override
-	public String toString() {
-		return "Persona [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", password=" + password + ", isAdmin=" + isAdmin + ", casa=" + casa + "]";
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+	public int getDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(int disponible) {
+		this.disponible = disponible;
+	}
+	
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 	
 }

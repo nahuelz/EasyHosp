@@ -2,40 +2,31 @@ package easyHosp.modelo;
 
 public class Casa {
 	int id;
-	Persona dueño;
 	String lugar;
 	String chicos;
 	String mascota;
 	String permitidoFumar;
 	String habitacionCompartida;
-	String provincia;
-	String ciudad;
-	String disponible;
+	String contacto;
 	
+
 	public Casa(){
 		
 	}
 	
-	public Casa(String lugar, String chicos, String permitidoFumar, String habitacionCompartida, String disponible,
-			String provincia, String ciudad, String mascota) {
+	public Casa(int id, String lugar, String chicos, String permitidoFumar, String habitacionCompartida,
+			String mascota, String contacto) {
+		this.id = id;
 		this.lugar = lugar;
 		this.chicos = chicos;
 		this.mascota = mascota;
 		this.permitidoFumar = permitidoFumar;
 		this.habitacionCompartida = habitacionCompartida;
-		this.provincia = provincia;
-		this.ciudad = ciudad;
-		this.disponible = disponible;
+		this.contacto = contacto;
 	}
 
 	public int getId() {
 		return id;
-	}
-	public Persona getDueño() {
-		return dueño;
-	}
-	public void setDueño(Persona per) {
-		this.dueño = per;
 	}
 	public String getLugar() {
 		return lugar;
@@ -67,27 +58,13 @@ public class Casa {
 	public void setHabitacionCompartida(String piezaCompartida) {
 		this.habitacionCompartida = piezaCompartida;
 	}
-	public String getDisponible() {
-		return disponible;
+	
+	public String getContacto() {
+		return contacto;
 	}
-	public void setDisponible(String disponible) {
-		this.disponible = disponible;
+	public void setContacto(String contacto) {
+		this.contacto = contacto;
 	}
 	
-	public String getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
-
-	public String getCiudad() {
-		return ciudad;
-	}
-
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
-	}
 
 }

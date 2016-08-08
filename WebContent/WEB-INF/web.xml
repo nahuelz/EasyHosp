@@ -9,24 +9,60 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
-  	<servlet-name>LoginController</servlet-name>
-  	<servlet-class>easyHosp.controller.LoginController</servlet-class>
+    <servlet-name>MisSolicitudesController</servlet-name>
+    <servlet-class>easyHosp.controller.MisSolicitudesController</servlet-class>
   </servlet>
-  
-  <servlet>
-  	<servlet-name>RegistroController</servlet-name>
-  	<servlet-class>easyHosp.controller.RegistroController</servlet-class>
-  </servlet>
-  
   <servlet-mapping>
-  	<servlet-name>RegistroController</servlet-name>
-  	<url-pattern>/RegistroController</url-pattern>
+    <servlet-name>MisSolicitudesController</servlet-name>
+    <url-pattern>/MisSolicitudesController</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>SolicitarHospedajeController</servlet-name>
+    <servlet-class>easyHosp.controller.SolicitarHospedajeController</servlet-class>
+  </servlet>
   <servlet-mapping>
-  	<servlet-name>LoginController</servlet-name>
-  	<url-pattern>/LoginController</url-pattern>
+    <servlet-name>SolicitarHospedajeController</servlet-name>
+    <url-pattern>/SolicitarHospedajeController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>VerDetalleController</servlet-name>
+    <servlet-class>easyHosp.controller.VerDetalleController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerDetalleController</servlet-name>
+    <url-pattern>/VerDetalle</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LogoutController</servlet-name>
+    <servlet-class>easyHosp.controller.LogoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutController</servlet-name>
+    <url-pattern>/LogoutController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>HospedajeController</servlet-name>
+    <servlet-class>easyHosp.controller.HospedajeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HospedajeController</servlet-name>
+    <url-pattern>/HospedajeController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>easyHosp.controller.LoginController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/LoginController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RegistroController</servlet-name>
+    <servlet-class>easyHosp.controller.RegistroController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistroController</servlet-name>
+    <url-pattern>/RegistroController</url-pattern>
   </servlet-mapping>
 </web-app>

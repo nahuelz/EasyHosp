@@ -16,13 +16,12 @@ public class Conexion {
     
  // connect database
     public Connection conectar() throws ClassNotFoundException {
-    	this.conexion = null;
-    	
+    	this.conexion = null;    	
     	try {
     		Class.forName("com.mysql.jdbc.Driver");
 			conexion = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("No se pudo conectar a la base de datos");
 		}
     	return conexion;
     }

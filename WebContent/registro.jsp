@@ -1,4 +1,4 @@
-<%@include file="header.html" %>
+<%@include file="views/base.jsp" %>
 <body>
 	<div class='container'>
 		<section id="wizard">
@@ -62,9 +62,9 @@
 		                 				<label>Quieries hacer publico tu hogar?</label>
 		                 				<p>*Así otras persona podran solicitar hospedarse<p>
 		                 				<p>*Luego podras modificar esta opcion</p>
-		                 				<select name="Disponible" class="form-control">
-											<option value="si">Si</option>
-											<option value="no">No</option>			  
+		                 				<select name="disponible" class="form-control">
+											<option value="1">Si</option>
+											<option value="0">No</option>			  
 										</select>
 		             				</div>
 		             				
@@ -111,24 +111,24 @@
 		             				</div>
 		             				<div class="form-group">
 			               				<label>Hay chicos?</label>
-			               				<select name="lugar" class="form-control">
-											<option value="si">Si</option>
-											<option value="no">No</option>			  
+			               				<select name="chicos" class="form-control">
+											<option value="Si">Si</option>
+											<option value="No">No</option>			  
 										</select>
 		           					</div>
 		            				<div class="form-group">
 		                 				<label>Tenes mascota?</label>
 		                 				<select name="mascota" class="form-control">
-											<option value="si">Si</option>
-											<option value="no">No</option>			  
+											<option value="Si">Si</option>
+											<option value="No">No</option>			  
 										</select>
 		             				</div>
 			
 									<div class="form-group">
 								    	<label>Se puede fumar en la casa?</label>
 								        <select name="fumar" class="form-control">
-											<option value="si">Si</option>
-											<option value="no">No</option>			  
+											<option value="Si">Si</option>
+											<option value="No">No</option>			  
 										</select>
 									</div>
 			
@@ -136,20 +136,18 @@
 									<div class="form-group">
 		                 				<label>La habitacion es compartida?</label>
 		                 				<select name="compartida" class="form-control">
-											<option value="si">Si</option>
-											<option value="no">No</option>			  
+											<option value="Si">Si</option>
+											<option value="No">No</option>			  
 										</select>
 		             				</div>
 		             				
 		             				<ul class="pager wizard">
-										<li class="previous first" style="display:none;"><a href="#">First</a></li>
 										<li class="previous"><a href="#">Previous</a></li>
-										<li class="next last" style="display:none;"><a href="#">Last</a></li>
 			  							<li class="next"><a href="#">Next</a></li>
 									</ul>
 			                		
 			                		<div class="form-group">
-		               					<button id="aceptarNuevoRegistro" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Aceptar</button>
+		               					<button  class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Aceptar</button>
 		          					</div>	               	           
 	           					</form>
 	          				</div>
@@ -160,4 +158,4 @@
     	</section>
 	</div>
 </body>
-<%@include file="footer.html" %>
+<%@include file="views/footer.jsp" %>

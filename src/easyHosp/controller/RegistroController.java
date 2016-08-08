@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import easyHosp.servicio.RegistroServicio;
+import easyHosp.servicio.PersonaServicio;
 
 /**
  * Servlet implementation class RegistroController
@@ -14,7 +14,7 @@ import easyHosp.servicio.RegistroServicio;
 @SuppressWarnings("serial")
 public class RegistroController extends HttpServlet {
 	
-	RegistroServicio servicio = new RegistroServicio();
+	PersonaServicio servicio = new PersonaServicio();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -34,25 +34,34 @@ public class RegistroController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//DATOS PERSONA
-		String apellido = request.getParameter("apellido");
-		String nombre =  request.getParameter("nombre");
+		//VERIFICO QUE NO EXISTA EL EMAIL
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		if (!servicio.existeEmail(email)){
+			//DATOS PERSONA
+			String apellido = request.getParameter("apellido");
+			String nombre =  request.getParameter("nombre");
+			String password = request.getParameter("password");
+			String provincia = request.getParameter("provincia");
+			String ciudad = request.getParameter("ciudad");
+			int disponible = Integer.parseInt(request.getParameter("disponible"));
+			
+			//DATOS CASA
+			String lugar = request.getParameter("lugar");
+			String chicos = request.getParameter("chicos");
+			String mascota = request.getParameter("mascota");
+			String fumar = request.getParameter("fumar");
+			String compartida = request.getParameter("compartida");	
+			servicio.registrar(nombre, apellido, email, password, disponible, lugar, chicos, mascota, fumar, compartida, provincia, ciudad);
+
+			request.setAttribute("msj", "Cuenta creada exitosamente");
+			request.setAttribute("tipo", 1);
+			request.getRequestDispatcher("login.jsp").forward(request,response);
+		}else{
+			request.setAttribute("msj", "Ya existe un usuario registrado con este email");
+			request.setAttribute("tipo", 2);
+			request.getRequestDispatcher("registro.jsp").forward(request,response);
 		
-		//DATOS CASA
-		String disponible = request.getParameter("disponible");
-		String lugar = request.getParameter("lugar");
-		String chicos = request.getParameter("chicos");
-		String mascota = request.getParameter("mascota");
-		String fumar = request.getParameter("fumar");
-		String compartida = request.getParameter("compartida");	
-		String provincia = request.getParameter("provincia");
-		String ciudad = request.getParameter("ciudad");
-		servicio.registrar(nombre, apellido, email, password, disponible, lugar, chicos, mascota, fumar, compartida, provincia, ciudad);
-	
-		request.getRequestDispatcher("login.jsp").forward(request,response);
-		
+		}
 	}
 			
 

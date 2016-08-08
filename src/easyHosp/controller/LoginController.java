@@ -5,9 +5,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import easyHosp.modelo.Persona;
-import easyHosp.servicio.LoginServicio;
+import easyHosp.servicio.PersonaServicio;
 
 /**
  * Servlet implementation class LoginController
@@ -16,7 +17,7 @@ import easyHosp.servicio.LoginServicio;
 @SuppressWarnings("serial")
 public class LoginController extends HttpServlet {
 	
-	LoginServicio servicio = new LoginServicio();
+	PersonaServicio servicio = new PersonaServicio();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,7 +39,6 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
@@ -50,12 +50,23 @@ public class LoginController extends HttpServlet {
 		}
 				
 		if (per != null){
+			HttpSession session = request.getSession();
+			session.setAttribute("id", per.getId());
+			session.setAttribute("pass", per.getPassword());
+			session.setAttribute("nombre", per.getNombre());
+			session.setAttribute("apellido", per.getApellido());
+			session.setAttribute("email", per.getEmail());
+			session.setAttribute("isAdmin", per.getIsAdmin());
+			session.setAttribute("provincia", per.getProvincia());
+			session.setAttribute("ciudad", per.getCiudad());
 			request.setAttribute("per", per);
-			request.getRequestDispatcher("index.jsp").forward(request,response);
+			request.getRequestDispatcher("home.jsp").forward(request,response);
 		}else{
-			request.setAttribute("per", per);
+			request.setAttribute("msj", "Email o password incorrecto");
+			request.setAttribute("tipo", 2);
 			request.getRequestDispatcher("login.jsp").forward(request,response);
 		}
+		
 	}
 
 }

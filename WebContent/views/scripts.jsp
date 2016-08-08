@@ -1,0 +1,11 @@
+    <script src="js/jquery-latest.js"></script>
+    <script src="registro/bootstrap/js/bootstrap.min.js"></script>
+	<script src="registro/jquery.bootstrap.wizard.js"></script>
+	<script src="registro/prettify.js"></script>
+	<!-- <script src="js/jquery.js"></script> este jode al registro  --> 
+	<script src="js/main.js"></script>
+    <!-- <script src="js/bootstrap.js"></script>  este jode al navbar --> 
+    <script src="js/moment.min.js"></script>
+    <script src="js/daterangepicker.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/main3.js"></script>

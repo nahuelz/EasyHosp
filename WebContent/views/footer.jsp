@@ -1,3 +1,4 @@
+</body>
     <footer>
         <div class="container">
             <div class="row">
@@ -30,15 +31,7 @@
         </div>
         <a id="to-top" href="#top" class="btn btn-dark btn-lg"><i class="fa fa-chevron-up fa-fw fa-1x"></i></a>
     </footer>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="registro/bootstrap/js/bootstrap.min.js"></script>
-	<script src="registro/jquery.bootstrap.wizard.js"></script>
-	<script src="registro/prettify.js"></script>
-	<script>
-	$(document).ready(function() {
-	  	$('#rootwizard').bootstrapWizard();
-		window.prettyPrint && prettyPrint()
-	});
-	</script>
 </html>
+<%@include file="scripts.jsp" %>
+
 

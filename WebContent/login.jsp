@@ -1,4 +1,4 @@
-<%@include file="header.html" %>
+<%@include file="views/base.jsp" %>
 <body>
 	
 <div class="row">
@@ -22,10 +22,4 @@
  
 </body>
 
-<jsp:useBean id="per" scope="request" class="easyHosp.modelo.Persona" />
-Email: <jsp:getProperty name="per" property="email"/>
-Es Admin: <jsp:getProperty name="per" property="isAdmin" />
-
-
-
-<%@include file="footer.html" %>
+<%@include file="views/footer.jsp" %>

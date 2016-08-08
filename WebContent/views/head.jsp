@@ -1,6 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
 
     <meta charset="utf-8">
@@ -16,22 +17,13 @@
  	
     <!-- Custom CSS -->
     <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <link href="css/daterangepicker.css" rel="stylesheet">
    
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
 	
 </head>
-<!-- Header -->
-<header>
-    <ul class="nav nav-tabs">
-	  <li role=""><a href="index.jsp">Home</a></li>
-	  <li role=""><a href="login.jsp">Sign in</a></li>
-	  <li role=""><a href="registro.jsp">Sign up</a></li>
-	</ul>
-</header>
-
-
+	
     

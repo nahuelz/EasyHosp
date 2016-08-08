@@ -8,7 +8,7 @@ public interface DAO<T, K> {
 	
 	void modificar (T c) throws DAOException;
 	
-	void eliminar (T c) throws DAOException;
+	void eliminar (int c) throws DAOException;
 	
 	List<T> obtenerTodos() throws DAOException;
 	
